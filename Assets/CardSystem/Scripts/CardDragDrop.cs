@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class CardDragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
+    public GameObject gameTilemap;
+
     public float dampingSpeed = 0.05f;
     private Vector3 velocity = Vector3.zero;
     private Vector3 initialPosition = Vector3.zero;
@@ -39,6 +41,9 @@ public class CardDragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingObjectRectTransform, eventData.position, eventData.pressEventCamera, out var globalMousePosition)) {
             draggingObjectRectTransform.position = initialPosition;
         }
+
+        GridHelper gridHelper = gameTilemap.GetComponent<GridHelper>();
+        gridHelper.OnMouseDown(globalMousePosition);
     }
 
     private void HandleState(CardState state) {
