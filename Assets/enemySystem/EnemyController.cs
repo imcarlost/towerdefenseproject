@@ -5,23 +5,20 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public Transform movePoint;
+    private Transform movePoint;
     public ArrayList routePointList = new ArrayList();
     public int currentRoutePoint = 0;
-
+    public int lives = 1;
     public Vector3 currentMovePoint;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        // search for the movePoint child object
+    public void init(){
+        Debug.Log("EnemyController::Start");
         movePoint = transform.Find("movePoint");
         movePoint.parent = null;
-
-        // debug route points
         Debug.Log("routePointList.Count: " + routePointList.Count);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public bool move()
     {
         // current move point + 1
-        currentMovePoint = (Vector3)routePointList[currentRoutePoint];
+        currentMovePoint = (Vector3) routePointList[currentRoutePoint];
 
         currentRoutePoint++;
         // if the current move point is the last one

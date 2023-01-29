@@ -9,29 +9,57 @@ public class MainController : MonoBehaviour
     public int playerInitLives = 3;
     private int playerLives;
     public GameObject tileMapObject;
+    public GameObject enemyManagerObj;
+    private EnemyManager enemyManager;
+    public Turret[] turrets;
 
     public BoundsInt area;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyManager = enemyManagerObj.GetComponent<EnemyManager>();
         playerLives = playerInitLives;
-        ExploreGrid();
+        // ExploreGrid();
     }
 
-    void EnemyTurn(){}
-    void EnemyReacts(){}
+    void EnemyTurn(){
+        enemyManager.processTurn();
+    }
+
     void Display(){}
 
     void PlayerTurn(){
         Display();
+        TurretsShoot();
+    }
+
+    void TurretsShoot(){
+        // buscar lista de todas las torres
+        turrets = (Turret[]) GameObject.FindObjectsOfType (typeof(Turret));
+
+        // turret goes brrrrr
+        foreach (Turret turret in turrets){
+           turret.Shoot(enemyManager.enemyList);
+        }
+    }
+
+    // JUST FOR DEBUGGING
+    void OnGUI()
+    {
+        // on spacebar press down
+        Event e = Event.current;
+        if(e.isKey && e.keyCode == KeyCode.Space && e.type == EventType.KeyDown)
+        {
+            NextTurn();
+        }
+        
     }
 
     void NextTurn(){
         EnemyTurn();
         PlayerTurn();
     }
-// .orientationMatrix
     TileBase[] ExploreGrid(){
     //    Tilemap bro = tileMap.GetComponent<Tilemap>();
 

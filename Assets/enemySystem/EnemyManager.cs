@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     private float enemySpawnRateSeconds = 0.5f;
     public float timeBetweenWaves = 5f;
     private ArrayList enemyPrefabList = new ArrayList();
-    private ArrayList enemyList = new ArrayList();
+    public ArrayList enemyList = new ArrayList();
 
     // Start is called before the first frame update
     void Start()
@@ -36,24 +36,30 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    // JUST FOR DEBUGGING
-    void OnGUI()
-    {
-        // on spacebar press down
-        Event e = Event.current;
-        if(e.isKey && e.keyCode == KeyCode.Space && e.type == EventType.KeyDown)
-        {
-            processTurn();
-        }
-        
-    }
+
 
     // processTurn() spawns the next enemy in the wave
-    void processTurn()
+    public void processTurn()
     {
+        enemyDead();
         instantiateNextEnemy();
         moveEnemies();
         
+    }
+
+    void enemyDead(){
+        ArrayList deleteList = new ArrayList();
+        foreach(GameObject enemy in enemyList){
+            if(enemy.GetComponent<EnemyController>().lives <= 0){
+                deleteList.Add(enemy);
+            }
+        }
+        // remove the enemies from the list
+        foreach(GameObject enemy in deleteList){
+            enemyList.Remove(enemy);
+            Destroy(enemy);
+        }
+        return;
     }
 
     void processWaves()
@@ -98,6 +104,7 @@ public class EnemyManager : MonoBehaviour
 
         // set the route points for the enemy
         EnemyController enemyController = enemy.GetComponent<EnemyController>();
+        enemyController.init();
         enemyController.routePointList = routePointList;
 
         enemy.transform.position = (Vector3)routePointList[0];
