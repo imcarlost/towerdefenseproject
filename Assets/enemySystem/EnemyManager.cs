@@ -55,6 +55,7 @@ public class EnemyManager : MonoBehaviour
     // processTurn() spawns the next enemy in the wave
     public void processTurn()
     {
+        enemyDead();
         instantiateNextEnemy();
         moveEnemies();
         
