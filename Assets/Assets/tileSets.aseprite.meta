@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
 guid: 82df4e69e66b91644bf9e2b05241515b
+=======
+guid: a9fdfe8c5455f45be927db198323b222
+>>>>>>> 25a89d9... Add: card dragging feature
+=======
+guid: 3fa356ca6b4b240c7b46fd356c92feac
+>>>>>>> b879843 (Add tileset creator and sprites into project)
 DefaultImporter:
   externalObjects: {}
   userData: 
