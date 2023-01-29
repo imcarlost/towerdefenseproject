@@ -9,9 +9,10 @@ public class EnemyController : MonoBehaviour
     public ArrayList routePointList = new ArrayList();
     private int currentRoutePoint = 0;
     public int lives = 1;
-    public Vector3 currentMovePoint;
-    public Animator spriteAnimator;
-    public Animator shadowAnimator;
+    private Vector3 currentMovePoint;
+    private Animator spriteAnimator;
+    private Animator shadowAnimator;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     public void init(){
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour
         movePoint.parent = null;
         // set animator child Sprinte Animator
         spriteAnimator = transform.Find("Sprite").GetComponent<Animator>();
+        spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
         shadowAnimator = transform.Find("Shadow").GetComponent<Animator>();
 
     }
@@ -36,6 +38,13 @@ public class EnemyController : MonoBehaviour
             spriteAnimator.SetBool("isMoving", true);
             shadowAnimator.SetBool("isMoving", true);
         }
+        updateRelativeSortOrder();
+
+    }
+
+    void updateRelativeSortOrder(){
+        float order = 100 - transform.position.y;
+        spriteRenderer.sortingOrder = (int) order;
     }
 
     // setNewMovePoint() is called when the player clicks on the ground
