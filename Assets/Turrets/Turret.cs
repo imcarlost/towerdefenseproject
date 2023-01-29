@@ -10,16 +10,37 @@ public class Turret : MonoBehaviour
     //public TileBase tileBase;
     public TileBase tileExplotion;
     private Tilemap mainMapTiles;
+    private Animator spriteAnimator;
+    private SpriteRenderer spriteRenderer;
+
 
     void Start(){
         GameObject mainMapObject = GameObject.Find("MainMap");
         mainMapTiles = mainMapObject.GetComponent<Tilemap>();
         Vector3Int bro = Vector3Int.FloorToInt(transform.position);
-        //mainMapTiles.SetTile(bro, tileBase);
+        
+        spriteAnimator = transform.Find("Sprite").GetComponent<Animator>();
+        spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+    }
+
+    void Update(){
+        updateRelativeSortOrder();
+    }
+
+    void updateRelativeSortOrder(){
+        float order = 100 - transform.position.y;
+        spriteRenderer.sortingOrder = (int) order ;
+    }
+
+    private IEnumerator animateShoot(){
+        spriteAnimator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(1f);
+        spriteAnimator.SetBool("isAttacking", false);
     }
     
     public void Shoot(ArrayList enemyList){
-
+        
         areaList = new List<Vector3>();
         areaList.AddRange(area);
 
@@ -27,17 +48,21 @@ public class Turret : MonoBehaviour
         enemyList.Sort((IComparer)new sortByDistance());
 
         foreach (GameObject enemy in enemyList){
-            // 
+
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             // Debug.Log("Turret::EnemyController.lives: " + enemyController.lives);
-            if (areaList.Contains(enemy.transform.position)){
+            if (areaList.Contains(enemyController.movePoint.transform.position)){
                 // enemigo encontrado, fucking shot at him
                 // Debug.Log("Turret::fucking shooting");
-                Vector3Int intVector = Vector3Int.FloorToInt(enemy.transform.position);
+                Vector3Int intVector = Vector3Int.FloorToInt(enemyController.movePoint.transform.position);
                 intVector += new Vector3Int(0,0,1);
                 mainMapTiles.SetTile(intVector, tileExplotion);
                 enemyController.lives -= 1;
+
+                StartCoroutine(animateShoot());
+
                 return;
+
             }
         }
     }
