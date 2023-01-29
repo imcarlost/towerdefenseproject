@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 3f;
     public Transform movePoint;
     public ArrayList routePointList = new ArrayList();
     private int currentRoutePoint = 0;
     public int lives = 1;
     public Vector3 currentMovePoint;
     public Animator spriteAnimator;
+    public Animator shadowAnimator;
 
     // Start is called before the first frame update
     public void init(){
@@ -19,7 +20,7 @@ public class EnemyController : MonoBehaviour
         movePoint.parent = null;
         // set animator child Sprinte Animator
         spriteAnimator = transform.Find("Sprite").GetComponent<Animator>();
-
+        shadowAnimator = transform.Find("Shadow").GetComponent<Animator>();
 
     }
     
@@ -30,8 +31,10 @@ public class EnemyController : MonoBehaviour
         if(Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
         {
             spriteAnimator.SetBool("isMoving", false);
+            shadowAnimator.SetBool("isMoving", false);
         }else{
             spriteAnimator.SetBool("isMoving", true);
+            shadowAnimator.SetBool("isMoving", true);
         }
     }
 

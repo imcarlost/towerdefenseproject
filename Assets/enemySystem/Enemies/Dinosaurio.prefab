@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1205044045342006304}
   - component: {fileID: 7869801922625089598}
+  - component: {fileID: 892261059283053567}
   m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &892261059283053567
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2490303553882874812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9cb3aa55536504a32885e5234d9e439f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3841147496672908548
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: -1569281765
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 81743747, guid: 77c64fc76c98a7244af11185720be8d3, type: 3}
+  m_Sprite: {fileID: -1240651722, guid: 77c64fc76c98a7244af11185720be8d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,11 +257,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0cf77cf6d374e8aa6e11ae1daf6df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   movePoint: {fileID: 0}
   lives: 1
   currentMovePoint: {x: 0, y: 0, z: 0}
-  animator: {fileID: 2213541468403792875}
+  spriteAnimator: {fileID: 0}
+  shadowAnimator: {fileID: 0}
 --- !u!1 &3841147497129060990
 GameObject:
   m_ObjectHideFlags: 0
