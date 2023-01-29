@@ -32,6 +32,7 @@ public class MainController : MonoBehaviour
     void PlayerTurn(){
         Display();
         TurretsShoot();
+        enemyManager.enemyDead();
     }
 
     void TurretsShoot(){

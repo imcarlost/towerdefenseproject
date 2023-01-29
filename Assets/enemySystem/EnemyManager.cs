@@ -53,13 +53,12 @@ public class EnemyManager : MonoBehaviour
     // processTurn() spawns the next enemy in the wave
     public void processTurn()
     {
-        enemyDead();
         instantiateNextEnemy();
         moveEnemies();
         
     }
 
-    void enemyDead(){
+    public void enemyDead(){
         ArrayList deleteList = new ArrayList();
         foreach(GameObject enemy in enemyList){
             if(enemy.GetComponent<EnemyController>().lives <= 0){
