@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Turret : MonoBehaviour
 {
-    public Vector3 position;
     public Vector3[] area;
-    public GameObject turretOrigin;
-    public void Shoot(ArrayList enemyList){
-        if (area == null)
-            area = new [] { new Vector3(0, 3, 0) };
+    public List<Vector3> areaList;
+    public TileBase tileBase;
+    public TileBase tileExplotion;
+    public Tilemap tileMainMap;
 
-        List<Vector3> areaList = new List<Vector3>();
+    void Start(){
+        GameObject tileMapObject = GameObject.Find("MainMap");
+        tileMainMap = tileMapObject.GetComponent<Tilemap>();
+        Vector3Int bro = Vector3Int.FloorToInt(transform.position);
+        tileMainMap.SetTile(bro, tileBase);
+        area = new [] { new Vector3(0, 3, 0) };
+    }
+    
+
+    public void Shoot(ArrayList enemyList){
+
+        areaList = new List<Vector3>();
         areaList.AddRange(area);
 
 
@@ -21,11 +32,13 @@ public class Turret : MonoBehaviour
         foreach (GameObject enemy in enemyList){
             // 
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            Debug.Log("enemyController.lives: " + enemyController.lives);
-
+            // Debug.Log("Turret::EnemyController.lives: " + enemyController.lives);
             if (areaList.Contains(enemy.transform.position)){
                 // enemigo encontrado, fucking shot at him
-                
+                // Debug.Log("Turret::fucking shooting");
+                Vector3Int intVector = Vector3Int.FloorToInt(enemy.transform.position);
+                intVector += new Vector3Int(0,0,1);
+                tileMainMap.SetTile(intVector, tileExplotion);
                 enemyController.lives -= 1;
                 return;
             }

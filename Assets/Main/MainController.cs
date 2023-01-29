@@ -37,7 +37,7 @@ public class MainController : MonoBehaviour
     void TurretsShoot(){
         // buscar lista de todas las torres
         turrets = (Turret[]) GameObject.FindObjectsOfType (typeof(Turret));
-
+        
         // turret goes brrrrr
         foreach (Turret turret in turrets){
            turret.Shoot(enemyManager.enemyList);
@@ -61,17 +61,17 @@ public class MainController : MonoBehaviour
         PlayerTurn();
     }
     TileBase[] ExploreGrid(){
-    //    Tilemap bro = tileMap.GetComponent<Tilemap>();
+        //    Tilemap bro = tileMap.GetComponent<Tilemap>();
 
-    //    Vector3 min = new Vector3(5, 0, 3);
-    //    Vector3 size = new Vector3(10, 15, 20);
-    //    BoundsInt area = new BoundsInt(min, size);
-    //    TileBase[] tileArray = bro.GetTilesBlock(area);
-    //    print(tileArray.Length);
-    //     for (int index = 0; index < tileArray.Length; index++){
-    //         if(tileArray[index] != null)
-    //           print(tileArray[index].name);
-    //     }
+        //    Vector3 min = new Vector3(5, 0, 3);
+        //    Vector3 size = new Vector3(10, 15, 20);
+        //    BoundsInt area = new BoundsInt(min, size);
+        //    TileBase[] tileArray = bro.GetTilesBlock(area);
+        //    print(tileArray.Length);
+        //     for (int index = 0; index < tileArray.Length; index++){
+        //         if(tileArray[index] != null)
+        //           print(tileArray[index].name);
+        //     }
         Tilemap tileMap = tileMapObject.GetComponent<Tilemap>();
         BoundsInt bounds = tileMap.cellBounds;
         TileBase[] allTiles = tileMap.GetTilesBlock(bounds);

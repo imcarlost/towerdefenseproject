@@ -13,10 +13,10 @@ public class EnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     public void init(){
-        Debug.Log("EnemyController::Start");
+        // Debug.Log("EnemyController::Start");
         movePoint = transform.Find("movePoint");
         movePoint.parent = null;
-        Debug.Log("routePointList.Count: " + routePointList.Count);
+        // Debug.Log("routePointList.Count: " + routePointList.Count);
     }
     
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.Log("currentMovePoint: " + currentMovePoint);
+            // Debug.Log("currentMovePoint: " + currentMovePoint);
             // set new move point
             setNewMovePoint(currentMovePoint);
             return true;
