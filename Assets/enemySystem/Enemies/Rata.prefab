@@ -179,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: -1569281765
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 81743747, guid: 77c64fc76c98a7244af11185720be8d3, type: 3}
+  m_Sprite: {fileID: -1117318850, guid: 77c64fc76c98a7244af11185720be8d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,7 +200,7 @@ Animator:
   m_GameObject: {fileID: 3841147496672908548}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 621da7c90312941b1879c8c2f4789e17, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8e05dd0c762b4873bcdd4b200d31d10, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 3841147496968172760}
   - component: {fileID: 3841147496968172761}
   m_Layer: 6
-  m_Name: Dinosaurio
+  m_Name: Rata
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0cf77cf6d374e8aa6e11ae1daf6df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 5
   movePoint: {fileID: 0}
   lives: 1
   currentMovePoint: {x: 0, y: 0, z: 0}

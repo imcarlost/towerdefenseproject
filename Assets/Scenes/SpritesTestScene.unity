@@ -156,6 +156,8 @@ MonoBehaviour:
   - enemyGroups:
     - enemyPrefab: {fileID: 3841147496968172767, guid: 0f2158c4eb3aa40ce81b91b9a680efe3, type: 3}
       quantity: 5
+    - enemyPrefab: {fileID: 3841147496968172767, guid: 9d2e150ffa0d54c49bc5c8a6831cae93, type: 3}
+      quantity: 3
   timeBetweenWaves: 5
 --- !u!4 &323896339
 Transform:
