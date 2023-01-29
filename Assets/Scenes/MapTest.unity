@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesTilemap: {fileID: 1527676670}
+  enemy: {fileID: 3841147496968172767, guid: 0ed3e57d267a045a0afa7fca514119ae, type: 3}
   spawn: {x: 0, y: 0, z: 0}
   ending: {x: 0, y: 0, z: 0}
 --- !u!4 &241027672
@@ -285,7 +286,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301187284
 GameObject:
@@ -624,75 +625,6 @@ PrefabInstance:
       objectReference: {fileID: 61101194}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3113039db05084b458a13ba22dfd9afd, type: 3}
---- !u!1 &1085151145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1085151147}
-  - component: {fileID: 1085151149}
-  - component: {fileID: 1085151148}
-  m_Layer: 0
-  m_Name: MainController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1085151147
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085151145}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1085151148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085151145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9268858b7a9c468ba52bc35b284fcf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyWaves:
-  - enemyGroups:
-    - enemyPrefab: {fileID: 3841147496968172767, guid: 0f2158c4eb3aa40ce81b91b9a680efe3, type: 3}
-      quantity: 5
-  timeBetweenWaves: 5
---- !u!114 &1085151149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085151145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86d358f68b30ee04d905c9cc20a45f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInitLives: 3
-  tileMapObject: {fileID: 1527676668}
-  enemyManagerObj: {fileID: 1085151145}
-  turrets: []
-  area:
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 0, y: 0, z: 0}
 --- !u!1 &1416120005
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +779,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 1, y: 9, z: 0}
+  - first: {x: 1, y: 8, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
