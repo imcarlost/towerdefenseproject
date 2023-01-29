@@ -15,13 +15,14 @@ public class EnemyManager : MonoBehaviour
     private ArrayList enemyPrefabList = new ArrayList();
     public ArrayList enemyList = new ArrayList();
 
-    public GameObject tileMapObject;
+    public GameObject mainMapObject;
 
     public TileBase tileA;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainMapObject = GameObject.Find("MainMap");
         // debug route points
         routePointList.Add(new Vector3(-4, -4, 0));
         routePointList.Add(new Vector3(-3, -3, 0));
@@ -37,16 +38,16 @@ public class EnemyManager : MonoBehaviour
         routePointList.Add(new Vector3(2, 6, 0));
         routePointList.Add(new Vector3(3, 6, 0));
 
-
-        drawLane();
+        // drawLane();
         processWaves();
 
     }
-     void drawLane(){
-        Tilemap tileMap = tileMapObject.GetComponent<Tilemap>();
+    
+    void drawLane(){
+        Tilemap mainMapTiles = mainMapObject.GetComponent<Tilemap>();
         foreach(Vector3 routePoint in routePointList){
             Vector3Int bro = Vector3Int.FloorToInt(routePoint);
-            tileMap.SetTile(bro, tileA);
+            mainMapTiles.SetTile(bro, tileA);
         }
      }
 
