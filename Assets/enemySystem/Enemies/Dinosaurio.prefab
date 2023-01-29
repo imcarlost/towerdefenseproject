@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: -1569281765
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1502903339, guid: b3512f96201ea48b79fb79c386fcd4ff, type: 3}
+  m_Sprite: {fileID: 1301036704, guid: 77c64fc76c98a7244af11185720be8d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -158,12 +158,12 @@ SpriteRenderer:
   m_SortingLayerID: -1569281765
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1598203031, guid: b3512f96201ea48b79fb79c386fcd4ff, type: 3}
+  m_Sprite: {fileID: 81743747, guid: 77c64fc76c98a7244af11185720be8d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -199,7 +199,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3841147496968172760}
   - component: {fileID: 3841147496968172761}
-  - component: {fileID: 9117658456897915918}
   m_Layer: 6
   m_Name: Dinosaurio
   m_TagString: Untagged
@@ -238,27 +237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  movePoint: {fileID: 0}
+  lives: 1
+  currentMovePoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 2213541468403792875}
---- !u!95 &9117658456897915918
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3841147496968172767}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 621da7c90312941b1879c8c2f4789e17, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3841147497129060990
 GameObject:
   m_ObjectHideFlags: 0

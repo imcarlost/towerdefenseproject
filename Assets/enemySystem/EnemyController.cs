@@ -5,24 +5,22 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    private Transform movePoint;
+    public Transform movePoint;
     public ArrayList routePointList = new ArrayList();
-<<<<<<< HEAD
-    public int currentRoutePoint = 0;
+    private int currentRoutePoint = 0;
     public int lives = 1;
     public Vector3 currentMovePoint;
-=======
-    private int currentRoutePoint = 0;
-    private Vector3 currentMovePoint;
-    public Animator animator;
->>>>>>> b879843 (Add tileset creator and sprites into project)
+    public Animator spriteAnimator;
 
     // Start is called before the first frame update
     public void init(){
         Debug.Log("EnemyController::Start");
         movePoint = transform.Find("movePoint");
         movePoint.parent = null;
-        Debug.Log("routePointList.Count: " + routePointList.Count);
+        // set animator child Sprinte Animator
+        spriteAnimator = transform.Find("Sprite").GetComponent<Animator>();
+
+
     }
     
     // Update is called once per frame
@@ -31,9 +29,9 @@ public class EnemyController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if(Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
         {
-            animator.SetBool("isMoving", false);
+            spriteAnimator.SetBool("isMoving", false);
         }else{
-            animator.SetBool("isMoving", true);
+            spriteAnimator.SetBool("isMoving", true);
         }
     }
 
