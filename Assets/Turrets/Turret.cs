@@ -7,24 +7,21 @@ public class Turret : MonoBehaviour
 {
     public Vector3[] area;
     public List<Vector3> areaList;
-    public TileBase tileBase;
+    //public TileBase tileBase;
     public TileBase tileExplotion;
-    public Tilemap tileMainMap;
+    private Tilemap mainMapTiles;
 
     void Start(){
-        GameObject tileMapObject = GameObject.Find("MainMap");
-        tileMainMap = tileMapObject.GetComponent<Tilemap>();
+        GameObject mainMapObject = GameObject.Find("MainMap");
+        mainMapTiles = mainMapObject.GetComponent<Tilemap>();
         Vector3Int bro = Vector3Int.FloorToInt(transform.position);
-        tileMainMap.SetTile(bro, tileBase);
-        area = new [] { new Vector3(0, 3, 0) };
+        //mainMapTiles.SetTile(bro, tileBase);
     }
     
-
     public void Shoot(ArrayList enemyList){
 
         areaList = new List<Vector3>();
         areaList.AddRange(area);
-
 
         // ordenarlo segun la distancia a mi torre enemyList
         enemyList.Sort((IComparer)new sortByDistance());
@@ -38,7 +35,7 @@ public class Turret : MonoBehaviour
                 // Debug.Log("Turret::fucking shooting");
                 Vector3Int intVector = Vector3Int.FloorToInt(enemy.transform.position);
                 intVector += new Vector3Int(0,0,1);
-                tileMainMap.SetTile(intVector, tileExplotion);
+                mainMapTiles.SetTile(intVector, tileExplotion);
                 enemyController.lives -= 1;
                 return;
             }
