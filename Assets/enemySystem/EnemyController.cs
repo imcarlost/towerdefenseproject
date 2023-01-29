@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     public void init(){
-        Debug.Log("EnemyController::Start");
+        // Debug.Log("EnemyController::Start");
         movePoint = transform.Find("movePoint");
         movePoint.parent = null;
         // set animator child Sprinte Animator
@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.Log("currentMovePoint: " + currentMovePoint);
+            // Debug.Log("currentMovePoint: " + currentMovePoint);
             // set new move point
             setNewMovePoint(currentMovePoint);
             return true;

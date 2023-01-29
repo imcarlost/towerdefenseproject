@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class EnemyManager : MonoBehaviour
     public float timeBetweenWaves = 5f;
     private ArrayList enemyPrefabList = new ArrayList();
     public ArrayList enemyList = new ArrayList();
+
+    public GameObject tileMapObject;
+
+    public TileBase tileA;
 
     // Start is called before the first frame update
     void Start()
@@ -33,22 +38,28 @@ public class EnemyManager : MonoBehaviour
         routePointList.Add(new Vector3(3, 6, 0));
 
 
+        drawLane();
         processWaves();
 
     }
-
+     void drawLane(){
+        Tilemap tileMap = tileMapObject.GetComponent<Tilemap>();
+        foreach(Vector3 routePoint in routePointList){
+            Vector3Int bro = Vector3Int.FloorToInt(routePoint);
+            tileMap.SetTile(bro, tileA);
+        }
+     }
 
 
     // processTurn() spawns the next enemy in the wave
     public void processTurn()
     {
-        enemyDead();
         instantiateNextEnemy();
         moveEnemies();
         
     }
 
-    void enemyDead(){
+    public void enemyDead(){
         ArrayList deleteList = new ArrayList();
         foreach(GameObject enemy in enemyList){
             if(enemy.GetComponent<EnemyController>().lives <= 0){
