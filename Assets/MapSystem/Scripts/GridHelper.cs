@@ -5,25 +5,40 @@ using UnityEngine.Tilemaps;
 
 public class GridHelper : MonoBehaviour {
 
-    public Tilemap enemiesTilemap;
-    public GameObject enemy;
-
-    public Vector3 spawn;
-    public Vector3 ending;
+    private Tilemap tilemap;
 
     // Start is called before the first frame update
-    void Start() {
-        ExploreGrid();
-        SpawnEnemy();
+    void Awake() {
+        tilemap = GetComponent<Tilemap>();
+    }
+
+    public void OnMouseDown(Vector3 position) {
+        GetTileAt(GetGameTilePosition(position));
+    }
+
+    public Vector3Int GetGameTilePosition(Vector3 position) {
+        position -= new Vector3(0, -1, 0);
+        Debug.LogWarning(tilemap.WorldToCell(position));
+        return tilemap.WorldToCell(position);
+    }
+
+    public TileBase GetTileAt(Vector3Int position) {
+        BoundsInt bounds = tilemap.cellBounds;
+        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
+        TileBase tile = allTiles[position.x + position.y * bounds.size.x];
+        if (tile != null) {
+            Debug.LogWarning(tile.name);
+        }
+        return tile;
     }
 
     public Vector3 GetTileWorldPosition(Vector2Int position) {
-        Vector3 worldPostion = Vector3.zero;
         Vector3Int tilePosition = new Vector3Int(position.x, position.y, 0);
-        worldPostion = enemiesTilemap.CellToWorld(tilePosition);
+        Vector3 worldPostion = tilemap.CellToWorld(tilePosition);
         return worldPostion;
     }
 
+    /*
     TileBase[] ExploreGrid() {
         BoundsInt bounds = enemiesTilemap.cellBounds;
         TileBase[] allTiles = enemiesTilemap.GetTilesBlock(bounds);
@@ -40,8 +55,5 @@ public class GridHelper : MonoBehaviour {
         }
         return allTiles;
     }
-
-    void SpawnEnemy() {
-        Instantiate(enemy, spawn, Quaternion.identity);
-    }
+    */
 }
