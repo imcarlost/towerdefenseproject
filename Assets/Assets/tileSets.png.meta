@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 77c64fc76c98a7244af11185720be8d3
+=======
+guid: 06b4b28debfa3411c85908cf44697817
+>>>>>>> 25a89d9... Add: card dragging feature
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +106,23 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< HEAD
     buildTarget: WebGL
+=======
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+>>>>>>> 25a89d9... Add: card dragging feature
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
