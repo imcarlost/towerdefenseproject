@@ -7,9 +7,15 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 5f;
     private Transform movePoint;
     public ArrayList routePointList = new ArrayList();
+<<<<<<< HEAD
     public int currentRoutePoint = 0;
     public int lives = 1;
     public Vector3 currentMovePoint;
+=======
+    private int currentRoutePoint = 0;
+    private Vector3 currentMovePoint;
+    public Animator animator;
+>>>>>>> b879843 (Add tileset creator and sprites into project)
 
     // Start is called before the first frame update
     public void init(){
@@ -23,11 +29,18 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        if(Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
+        {
+            animator.SetBool("isMoving", false);
+        }else{
+            animator.SetBool("isMoving", true);
+        }
     }
 
     // setNewMovePoint() is called when the player clicks on the ground
     public void setNewMovePoint(Vector3 newMovePoint)
     {
+
         movePoint.position = newMovePoint;
     }
 
