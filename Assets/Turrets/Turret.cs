@@ -5,14 +5,16 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public Vector3 position;
-    public ArrayList area;
+    public Vector3[] area;
     public GameObject turretOrigin;
     public void Shoot(ArrayList enemyList){
-        if (area == null){
-            area = new ArrayList();
-            area.Add(new Vector3(0, 3, 0));
-        }
-            
+        if (area == null)
+            area = new [] { new Vector3(0, 3, 0) };
+
+        List<Vector3> areaList = new List<Vector3>();
+        areaList.AddRange(area);
+
+
         // ordenarlo segun la distancia a mi torre enemyList
         enemyList.Sort((IComparer)new sortByDistance());
 
@@ -21,7 +23,7 @@ public class Turret : MonoBehaviour
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             Debug.Log("enemyController.lives: " + enemyController.lives);
 
-            if (area.Contains(enemy.transform.position)){
+            if (areaList.Contains(enemy.transform.position)){
                 // enemigo encontrado, fucking shot at him
                 
                 enemyController.lives -= 1;
