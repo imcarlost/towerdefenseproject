@@ -20,9 +20,6 @@ public class MainController : MonoBehaviour
     {
         enemyManager = enemyManagerObj.GetComponent<EnemyManager>();
         playerLives = playerInitLives;
-        // ExploreGrid();
-
-        InvokeRepeating("NextTurn", 0, 1f);
     }
 
     void EnemyTurn(){

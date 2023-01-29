@@ -24,10 +24,10 @@ public class EnemyManager : MonoBehaviour
     {
         mainMapObject = GameObject.Find("MainMap");
         // debug route points
-        routePointList.Add(new Vector3(-4, -4, 0));
-        routePointList.Add(new Vector3(-3, -3, 0));
-        routePointList.Add(new Vector3(-4, -3, 0));
-        routePointList.Add(new Vector3(-3, -4, 0));
+        routePointList.Add(new Vector3(0, 1, 0));
+        routePointList.Add(new Vector3(1, 1, 0));
+        routePointList.Add(new Vector3(1, 2, 0));
+        routePointList.Add(new Vector3(2, 2, 0));
         routePointList.Add(new Vector3(3, 2, 0));
         routePointList.Add(new Vector3(3, 3, 0));
         routePointList.Add(new Vector3(3, 4, 0));
@@ -55,6 +55,7 @@ public class EnemyManager : MonoBehaviour
     // processTurn() spawns the next enemy in the wave
     public void processTurn()
     {
+        enemyDead();
         instantiateNextEnemy();
         moveEnemies();
         
