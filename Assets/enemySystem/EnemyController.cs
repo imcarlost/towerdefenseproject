@@ -18,7 +18,8 @@ public class EnemyController : MonoBehaviour
     public void init(){
         // Debug.Log("EnemyController::Start");
         movePoint = transform.Find("movePoint");
-        movePoint.parent = null;
+        GameObject mainMapObject = GameObject.Find("MainMap");
+        movePoint.SetParent(mainMapObject.transform.parent);
         // set animator child Sprinte Animator
         spriteAnimator = transform.Find("Sprite").GetComponent<Animator>();
         spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -35,8 +36,8 @@ public class EnemyController : MonoBehaviour
             spriteAnimator.SetBool("isMoving", false);
             shadowAnimator.SetBool("isMoving", false);
         }else{
-            spriteAnimator.SetBool("isMoving", true);
-            shadowAnimator.SetBool("isMoving", true);
+            spriteAnimator.SetBool("isMoving", false);
+            shadowAnimator.SetBool("isMoving", false);
         }
         updateRelativeSortOrder();
 
@@ -51,7 +52,7 @@ public class EnemyController : MonoBehaviour
     public void setNewMovePoint(Vector3 newMovePoint)
     {
 
-        movePoint.position = newMovePoint;
+        movePoint.localPosition  = newMovePoint;
     }
 
     // move
