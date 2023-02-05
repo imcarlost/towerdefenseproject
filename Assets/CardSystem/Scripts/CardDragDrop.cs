@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class CardDragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
@@ -13,8 +14,12 @@ public class CardDragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     private RectTransform draggingObjectRectTransform;
     private Image cardArtwork;
 
+    private MainController mainController;
+
     void Start() {
         cardArtwork = GetComponent<Image>();
+        GameObject mainControllerObj = GameObject.Find("MainController");
+        mainController = mainControllerObj.GetComponent<MainController>();
     }
 
     void Awake() {
@@ -43,8 +48,14 @@ public class CardDragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         }
 
         GridHelper gridHelper = gameTilemap.GetComponent<GridHelper>();
-        gridHelper.OnMouseDown(globalMousePosition);
+
+        Vector3Int tilePosition = gridHelper.GetGameTilePosition(globalMousePosition);
+        Vector3 tileCenter = gridHelper.GetTileWorldPosition(tilePosition);
+        
+        TileBase tile = gridHelper.GetTileAt(tilePosition);
+        mainController.CreateTurret(tileCenter, tile, GetComponent<Card>().turretObj);
     }
+
 
     private void HandleState(CardState state) {
         switch (state) {

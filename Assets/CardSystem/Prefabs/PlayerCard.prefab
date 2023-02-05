@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5178872194927244241}
   - component: {fileID: 5178872194927244246}
   - component: {fileID: 5178872194927244247}
-  - component: {fileID: 5178872194927244240}
+  - component: {fileID: 6045944248368561679}
+  - component: {fileID: 4834960986312999995}
   m_Layer: 5
   m_Name: PlayerCard
   m_TagString: Untagged
@@ -59,8 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a49fd00ba0746efa2f1b6b98eb9a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameTilemap: {fileID: 0}
   dampingSpeed: 0.02
---- !u!114 &5178872194927244240
+--- !u!114 &6045944248368561679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,3 +92,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4834960986312999995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178872194927244242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0875d938bb9050247bd749eabeb6b99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretObj: {fileID: 0}

@@ -10,12 +10,13 @@ public class EnemyManager : MonoBehaviour
     // enemy waves
     public EnemyWave[] enemyWaves;
     // time between waves
-    private float enemySpawnRateSeconds = 0.5f;
+    // private float enemySpawnRateSeconds = 0.5f;
     public float timeBetweenWaves = 5f;
     private ArrayList enemyPrefabList = new ArrayList();
     public ArrayList enemyList = new ArrayList();
 
     public GameObject mainMapObject;
+
 
     public TileBase tileA;
 
@@ -24,10 +25,7 @@ public class EnemyManager : MonoBehaviour
     {
         mainMapObject = GameObject.Find("MainMap");
         // debug route points
-        routePointList.Add(new Vector3(-4, -4, 0));
-        routePointList.Add(new Vector3(-3, -3, 0));
-        routePointList.Add(new Vector3(-4, -3, 0));
-        routePointList.Add(new Vector3(-3, -4, 0));
+
         routePointList.Add(new Vector3(3, 2, 0));
         routePointList.Add(new Vector3(3, 3, 0));
         routePointList.Add(new Vector3(3, 4, 0));
@@ -114,13 +112,16 @@ public class EnemyManager : MonoBehaviour
 
         // spawn enemy
         GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        enemy.transform.SetParent(mainMapObject.transform.parent); 
+        enemy.transform.SetLocalPositionAndRotation( (Vector3) routePointList[0], Quaternion.identity);
+        enemy.transform.localScale = new Vector3(1,1,1);
+
 
         // set the route points for the enemy
         EnemyController enemyController = enemy.GetComponent<EnemyController>();
         enemyController.init();
         enemyController.routePointList = routePointList;
 
-        enemy.transform.position = (Vector3)routePointList[0];
 
         // add enemy to the enemy list
         enemyList.Add(enemy);

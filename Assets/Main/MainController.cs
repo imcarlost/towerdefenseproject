@@ -20,13 +20,19 @@ public class MainController : MonoBehaviour
     {
         enemyManager = enemyManagerObj.GetComponent<EnemyManager>();
         playerLives = playerInitLives;
+        tileMapObject = GameObject.Find("MainMap");
         // ExploreGrid();
-
-        InvokeRepeating("NextTurn", 0, 1f);
+        // InvokeRepeating("NextTurn", 0, 1f);
     }
 
     void EnemyTurn(){
         enemyManager.processTurn();
+    }
+
+    public void CreateTurret(Vector3 position, TileBase tile, GameObject prefabTurret){
+        GameObject turret = Instantiate(prefabTurret, position, Quaternion.identity);
+        turret.transform.SetParent(tileMapObject.transform); 
+        turret.transform.localScale = new Vector3(1,1,1);
     }
 
     void Display(){}

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+
 public class GridHelper : MonoBehaviour {
 
     private Tilemap tilemap;
@@ -13,11 +15,16 @@ public class GridHelper : MonoBehaviour {
     }
 
     public void OnMouseDown(Vector3 position) {
-        GetTileAt(GetGameTilePosition(position));
+        Vector3Int tilePosition = GetGameTilePosition(position);
+        TileBase tile = GetTileAt(tilePosition);
     }
 
+    // public static Vector3 vector3(int x, int y, int z){
+    //     return GetTileWorldPosition(new Vector3Int(x,y,z));
+    // }
+
     public Vector3Int GetGameTilePosition(Vector3 position) {
-        position -= new Vector3(0, -1, 0);
+        position += new Vector3(0, 1, 0);
         Debug.LogWarning(tilemap.WorldToCell(position));
         return tilemap.WorldToCell(position);
     }
@@ -32,7 +39,8 @@ public class GridHelper : MonoBehaviour {
         return tile;
     }
 
-    public Vector3 GetTileWorldPosition(Vector2Int position) {
+    public Vector3 GetTileWorldPosition(Vector3Int position) {
+        position -= new Vector3Int(0, 1, 0);
         Vector3Int tilePosition = new Vector3Int(position.x, position.y, 0);
         Vector3 worldPostion = tilemap.CellToWorld(tilePosition);
         return worldPostion;
