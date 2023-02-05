@@ -26,15 +26,33 @@ public class EnemyManager : MonoBehaviour
         mainMapObject = GameObject.Find("MainMap");
         // debug route points
 
+        routePointList.Add(new Vector3(0, 0, 0));
+        routePointList.Add(new Vector3(0, 1, 0));
+        routePointList.Add(new Vector3(1, 1, 0));
+        routePointList.Add(new Vector3(2, 1, 0));
+        routePointList.Add(new Vector3(3, 1, 0));
         routePointList.Add(new Vector3(3, 2, 0));
         routePointList.Add(new Vector3(3, 3, 0));
         routePointList.Add(new Vector3(3, 4, 0));
-        routePointList.Add(new Vector3(2, 4, 0));
-        routePointList.Add(new Vector3(1, 4, 0));
+        routePointList.Add(new Vector3(3, 5, 0));
+        routePointList.Add(new Vector3(2, 5, 0));
         routePointList.Add(new Vector3(1, 5, 0));
-        routePointList.Add(new Vector3(1, 6, 0));
-        routePointList.Add(new Vector3(2, 6, 0));
-        routePointList.Add(new Vector3(3, 6, 0));
+        routePointList.Add(new Vector3(1, 4, 0));
+        routePointList.Add(new Vector3(1, 3, 0));
+        routePointList.Add(new Vector3(2, 3, 0));
+        routePointList.Add(new Vector3(3, 3, 0));
+        routePointList.Add(new Vector3(4, 3, 0));
+        routePointList.Add(new Vector3(5, 3, 0));
+        routePointList.Add(new Vector3(5, 4, 0));
+        routePointList.Add(new Vector3(5, 5, 0));
+        routePointList.Add(new Vector3(5, 6, 0));
+        routePointList.Add(new Vector3(5, 7, 0));
+        routePointList.Add(new Vector3(4, 7, 0));
+        routePointList.Add(new Vector3(3, 7, 0));
+        routePointList.Add(new Vector3(2, 7, 0));
+        routePointList.Add(new Vector3(1, 7, 0));
+        routePointList.Add(new Vector3(1, 8, 0));
+        routePointList.Add(new Vector3(1, 9, 0));
 
         // drawLane();
         processWaves();
@@ -112,7 +130,7 @@ public class EnemyManager : MonoBehaviour
 
         // spawn enemy
         GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        enemy.transform.SetParent(mainMapObject.transform.parent); 
+        enemy.transform.SetParent(mainMapObject.transform); 
         enemy.transform.SetLocalPositionAndRotation( (Vector3) routePointList[0], Quaternion.identity);
         enemy.transform.localScale = new Vector3(1,1,1);
 

@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
         // Debug.Log("EnemyController::Start");
         movePoint = transform.Find("movePoint");
         GameObject mainMapObject = GameObject.Find("MainMap");
-        movePoint.SetParent(mainMapObject.transform.parent);
+        movePoint.SetParent(mainMapObject.transform);
         // set animator child Sprinte Animator
         spriteAnimator = transform.Find("Sprite").GetComponent<Animator>();
         spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
