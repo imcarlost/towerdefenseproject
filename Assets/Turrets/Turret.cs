@@ -37,32 +37,37 @@ public class Turret : MonoBehaviour
         spriteAnimator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(1f);
         spriteAnimator.SetBool("isAttacking", false);
+        Destroy(gameObject);
     }
     
     public void Shoot(ArrayList enemyList){
         
         areaList = new List<Vector3>();
-        areaList.AddRange(area);
-
+        
+        // areaList.AddRange(area);
+        
+        foreach (Vector3 areaPoint in area){
+            Vector3 forward = transform.localPosition + areaPoint;
+            areaList.Add(forward);
+        }
+        
         // ordenarlo segun la distancia a mi torre enemyList
         enemyList.Sort((IComparer)new sortByDistance());
 
         foreach (GameObject enemy in enemyList){
 
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            // Debug.Log("Turret::EnemyController.lives: " + enemyController.lives);
-            if (areaList.Contains(enemyController.movePoint.transform.position)){
+            Debug.Log("Turret::EnemyController.lives: " + enemyController.lives);
+            if (areaList.Contains(enemyController.movePoint.transform.localPosition)){
                 // enemigo encontrado, fucking shot at him
-                // Debug.Log("Turret::fucking shooting");
-                Vector3Int intVector = Vector3Int.FloorToInt(enemyController.movePoint.transform.position);
+                Debug.Log("Turret::fucking shooting");
+                Vector3Int intVector = Vector3Int.FloorToInt(enemyController.movePoint.transform.localPosition);
                 intVector += new Vector3Int(0,0,1);
                 mainMapTiles.SetTile(intVector, tileExplotion);
                 enemyController.lives -= 1;
-
+                
                 StartCoroutine(animateShoot());
-
                 return;
-
             }
         }
     }
@@ -73,8 +78,8 @@ public class Turret : MonoBehaviour
     // var newData = data1.Select(i => i.ToString()).Intersect(data2);
     private class sortByDistance: IComparer{
       int IComparer.Compare(object a, object b){
-         Vector3 p1=((GameObject)a).transform.position;
-         Vector3 p2=((GameObject)b).transform.position;
+         Vector3 p1 = ((GameObject) a).transform.position;
+         Vector3 p2 = ((GameObject) b).transform.position;
 
          int bro = (int) Vector3.Distance(p1, p2);
          return bro;
